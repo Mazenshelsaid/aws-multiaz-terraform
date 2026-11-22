@@ -1,0 +1,3 @@
+# Copy to terraform.tfvars and edit. terraform.tfvars is git-ignored.
+s3_bucket_name = "your-bucket-name"
+s3_prefix      = "app-data/"

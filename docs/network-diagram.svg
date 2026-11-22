@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 690" width="1000" height="690" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#374151"/>
+    </marker>
+  </defs>
+
+  <rect width="1000" height="690" fill="#ffffff"/>
+  <text x="40" y="34" font-size="18" font-weight="bold" fill="#111827">Task 2: multi-AZ VPC with private application instance (design only, nothing deployed)</text>
+
+  <ellipse cx="390" cy="82" rx="80" ry="26" fill="#f3f4f6" stroke="#6b7280"/>
+  <text x="390" y="87" font-size="14" text-anchor="middle" fill="#111827">Internet</text>
+  <path d="M390,108 L390,135" stroke="#374151" stroke-width="1.5" fill="none" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+  <rect x="40" y="150" width="700" height="480" rx="8" fill="#f9fafb" stroke="#1f2937" stroke-width="2"/>
+  <text x="55" y="172" font-size="14" font-weight="bold" fill="#111827">VPC 10.0.0.0/16</text>
+
+  <rect x="320" y="135" width="140" height="30" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="390" y="155" font-size="13" text-anchor="middle" fill="#111827">Internet Gateway</text>
+
+  <rect x="70" y="200" width="310" height="400" rx="6" fill="none" stroke="#6b7280" stroke-dasharray="6 4"/>
+  <text x="85" y="222" font-size="13" font-weight="bold" fill="#374151">AZ a (us-east-1a)</text>
+  <rect x="400" y="200" width="310" height="400" rx="6" fill="none" stroke="#6b7280" stroke-dasharray="6 4"/>
+  <text x="415" y="222" font-size="13" font-weight="bold" fill="#374151">AZ b (us-east-1b)</text>
+
+  <rect x="90" y="240" width="270" height="132" rx="5" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="105" y="260" font-size="13" font-weight="bold" fill="#14532d">Public subnet a</text>
+  <text x="105" y="276" font-size="11" fill="#14532d">10.0.0.0/24</text>
+  <text x="105" y="322" font-size="10.5" fill="#14532d">Route table:</text>
+  <text x="105" y="336" font-size="10.5" fill="#14532d">0.0.0.0/0 to IGW</text>
+  <rect x="200" y="275" width="150" height="60" rx="4" fill="#ffffff" stroke="#374151"/>
+  <text x="275" y="301" font-size="13" text-anchor="middle" fill="#111827">NAT Gateway a</text>
+  <text x="275" y="319" font-size="11" text-anchor="middle" fill="#4b5563">with Elastic IP</text>
+
+  <rect x="420" y="240" width="270" height="132" rx="5" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="435" y="260" font-size="13" font-weight="bold" fill="#14532d">Public subnet b</text>
+  <text x="435" y="276" font-size="11" fill="#14532d">10.0.1.0/24</text>
+  <text x="435" y="322" font-size="10.5" fill="#14532d">Route table:</text>
+  <text x="435" y="336" font-size="10.5" fill="#14532d">0.0.0.0/0 to IGW</text>
+  <rect x="530" y="275" width="150" height="60" rx="4" fill="#ffffff" stroke="#374151"/>
+  <text x="605" y="301" font-size="13" text-anchor="middle" fill="#111827">NAT Gateway b</text>
+  <text x="605" y="319" font-size="11" text-anchor="middle" fill="#4b5563">with Elastic IP</text>
+
+  <rect x="90" y="420" width="270" height="170" rx="5" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="105" y="440" font-size="13" font-weight="bold" fill="#1e3a8a">Private subnet a</text>
+  <text x="105" y="455" font-size="11" fill="#1e3a8a">10.0.10.0/24</text>
+  <rect x="110" y="475" width="130" height="60" rx="4" fill="#ffffff" stroke="#374151"/>
+  <text x="175" y="501" font-size="13" text-anchor="middle" fill="#111827">App instance</text>
+  <text x="175" y="519" font-size="11" text-anchor="middle" fill="#4b5563">no public IP, IMDSv2</text>
+  <text x="105" y="556" font-size="10.5" fill="#1e3a8a">SG: app port from VPC range only</text>
+  <text x="105" y="574" font-size="10.5" fill="#1e3a8a">Route table: 0.0.0.0/0 to NAT a</text>
+
+  <rect x="420" y="420" width="270" height="170" rx="5" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="435" y="440" font-size="13" font-weight="bold" fill="#1e3a8a">Private subnet b</text>
+  <text x="435" y="455" font-size="11" fill="#1e3a8a">10.0.11.0/24</text>
+  <rect x="440" y="475" width="130" height="60" rx="4" fill="none" stroke="#6b7280" stroke-dasharray="5 4"/>
+  <text x="505" y="510" font-size="12" text-anchor="middle" fill="#4b5563">no instance</text>
+  <text x="435" y="556" font-size="10.5" fill="#1e3a8a">DB SG: 5432 from app SG only</text>
+  <text x="435" y="574" font-size="10.5" fill="#1e3a8a">Route table: 0.0.0.0/0 to NAT b</text>
+
+  <path d="M240,505 L300,505 L300,337" stroke="#374151" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="294" y="400" font-size="10" text-anchor="end" fill="#374151">default route</text>
+  <path d="M570,505 L630,505 L630,337" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="5 4" fill="none" marker-end="url(#arrow)"/>
+  <text x="624" y="400" font-size="10" text-anchor="end" fill="#6b7280">default route</text>
+
+  <path d="M340,275 L340,167" stroke="#374151" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M560,275 L560,185 L430,185 L430,167" stroke="#374151" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <path d="M680,305 L775,305" stroke="#374151" stroke-width="1.5" stroke-dasharray="5 4" fill="none" marker-end="url(#arrow)"/>
+  <text x="702" y="298" font-size="10" fill="#374151">HTTPS</text>
+
+  <rect x="775" y="270" width="200" height="70" rx="5" fill="#fff7ed" stroke="#c2410c"/>
+  <text x="875" y="293" font-size="13" font-weight="bold" text-anchor="middle" fill="#111827">Amazon S3</text>
+  <text x="875" y="311" font-size="11" text-anchor="middle" fill="#4b5563">bucket / app-data/ prefix</text>
+  <text x="875" y="327" font-size="11" text-anchor="middle" fill="#4b5563">read only for the app role</text>
+
+  <rect x="775" y="360" width="200" height="110" rx="5" fill="#ffffff" stroke="#374151"/>
+  <text x="875" y="382" font-size="13" font-weight="bold" text-anchor="middle" fill="#111827">IAM role (instance profile)</text>
+  <text x="790" y="404" font-size="11" fill="#374151">s3:GetObject on prefix/*</text>
+  <text x="790" y="422" font-size="11" fill="#374151">s3:ListBucket, prefix condition</text>
+  <text x="790" y="440" font-size="11" fill="#374151">trusted by ec2.amazonaws.com</text>
+  <text x="790" y="458" font-size="11" fill="#374151">no access keys anywhere</text>
+
+  <rect x="775" y="490" width="200" height="110" rx="5" fill="#ffffff" stroke="#374151"/>
+  <text x="875" y="512" font-size="13" font-weight="bold" text-anchor="middle" fill="#111827">Security groups</text>
+  <text x="790" y="534" font-size="11" fill="#374151">app: ingress app port, VPC range</text>
+  <text x="790" y="552" font-size="11" fill="#374151">app: egress 443 only</text>
+  <text x="790" y="570" font-size="11" fill="#374151">db: 5432 from app SG only</text>
+  <text x="790" y="588" font-size="11" fill="#374151">default SG: no rules</text>
+
+  <text x="40" y="662" font-size="12" fill="#4b5563">Outbound traffic, including S3 reads, leaves through the NAT gateways. Tests run against a mocked AWS provider.</text>
+</svg>
